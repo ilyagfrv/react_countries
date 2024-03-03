@@ -4,7 +4,7 @@ import { pluginReact } from '@rsbuild/plugin-react'
 export default defineConfig({
   plugins: [pluginReact()],
   html: {
-    title: 'Book Library',
+    title: 'Countries App',
     favicon: './src/assets/icons/icon.svg',
   },
 })
