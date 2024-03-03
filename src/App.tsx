@@ -1,9 +1,13 @@
 import './App.scss'
 
+import { Header } from 'components'
+
 export default function App() {
   return (
     <div className='app'>
-      <h1>Countries App</h1>
+      <div className='main'>
+        <Header />
+      </div>
     </div>
   )
 }

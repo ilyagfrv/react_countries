@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
 
 * {
   padding: 0;
@@ -19,20 +19,20 @@ body {
 
   background-color: #e0ffff;
 
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Nanum Gothic Coding', monospace;
   font-size: 62.5%;
-  color: #399dff;
+  color: teal;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
 
-  text-align: center;
-
-  h1 {
-    font-size: 3.6rem;
-    font-weight: 700;
-  }
+.main {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
