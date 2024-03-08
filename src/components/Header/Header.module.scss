@@ -1,23 +1,31 @@
 .header {
-  display: flex;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
   align-items: center;
-  justify-content: space-around;
-  padding: 1rem 0;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-  }
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
 }
 
-.icon {
-  font-size: 2.6rem;
-  color: #fecc1b;
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.lightIcon,
+.darkIcon {
+  font-size: 5rem;
 
   cursor: pointer;
-  transition: color 0.1s linear;
+  transition: color 0.2s linear;
+}
 
-  &:hover {
-    color: rgba(#fecc1b, 0.8);
-  }
+.lightIcon {
+  color: #fecc1b;
+}
+
+.darkIcon {
+  color: #3992ff;
 }
