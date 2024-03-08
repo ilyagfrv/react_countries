@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './App.css'
 
-import { Header, List } from 'components'
+import { Controls, Header, List } from 'components'
 
 export default function App() {
   const [theme, setTheme] = React.useState('light')
@@ -15,6 +15,7 @@ export default function App() {
       <Header theme={theme} toggleTheme={handleToggleTheme} />
 
       <main className='main'>
+        <Controls />
         <List />
       </main>
     </div>
