@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import { IoSunny } from 'react-icons/io5'
 import { GiNightSky } from 'react-icons/gi'
-import { WiStars } from 'react-icons/wi'
-import { BsFillMoonStarsFill } from 'react-icons/bs'
 
 import style from './Header.module.scss'
 
@@ -22,7 +20,7 @@ export default function Header({ theme, toggleTheme }: Props) {
         {theme === 'light' ? (
           <IoSunny className={style.lightIcon} />
         ) : (
-          <WiStars className={style.darkIcon} />
+          <GiNightSky className={style.darkIcon} />
         )}
       </div>
     </header>

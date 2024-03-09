@@ -10,13 +10,13 @@ export default function Controls() {
         placeholder='search country...'
       />
 
-      {/* <label for='city-select'>Ваш город</label> */}
-      <select className={style.select} name='region' id='city-select'>
-        <option value=''>Filter by region</option>
-        <option value='petersburg'>Europe</option>
-        <option value='samara'>Asia</option>
-        <option value='perm'>Africa</option>
-        <option value='novosibirsk'>America</option>
+      <select className={style.select} name='region'>
+        <option value=''>Filter by Region</option>
+        <option value='africa'>Africa</option>
+        <option value='america'>America</option>
+        <option value='asia'>Asia</option>
+        <option value='europe'>Europe</option>
+        <option value='oceania'>Oceania</option>
       </select>
     </section>
   )

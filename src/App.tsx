@@ -1,7 +1,12 @@
 import * as React from 'react'
+import { Routes, Route } from 'react-router-dom'
+
 import './App.css'
 
-import { Controls, Header, List, NotFoundInfo } from 'components'
+import { Header } from 'components'
+import Home from 'pages/Home'
+import Details from 'pages/Details'
+import NotFound from 'pages/NotFound'
 
 export default function App() {
   const [theme, setTheme] = React.useState('light')
@@ -15,8 +20,11 @@ export default function App() {
       <Header theme={theme} toggleTheme={handleToggleTheme} />
 
       <main className='main'>
-        <Controls />
-        <List />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/country/:name' element={<Details />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
       </main>
     </div>
   )
