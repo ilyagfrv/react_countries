@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+
+  span {
+    margin-bottom: 3rem;
+    font-size: 6rem;
+  }
+}
+
+.description {
+  font-size: 4rem;
+  font-weight: 900;
+}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './App.css'
 
-import { Controls, Header, List } from 'components'
+import { Controls, Header, List, NotFoundInfo } from 'components'
 
 export default function App() {
   const [theme, setTheme] = React.useState('light')
@@ -18,6 +18,8 @@ export default function App() {
         <Controls />
         <List />
       </main>
+
+      <NotFoundInfo />
     </div>
   )
 }
