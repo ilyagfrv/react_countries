@@ -18,8 +18,6 @@ export default function App() {
         <Controls />
         <List />
       </main>
-
-      <NotFoundInfo />
     </div>
   )
 }
