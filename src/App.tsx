@@ -1,5 +1,6 @@
-import * as React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectTheme } from 'redux/theme/selectors'
 
 import './App.css'
 
@@ -9,15 +10,11 @@ import Details from 'pages/Details'
 import NotFound from 'pages/NotFound'
 
 export default function App() {
-  const [theme, setTheme] = React.useState('light')
-
-  const handleToggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+  const theme = useSelector(selectTheme)
 
   return (
     <div className={`app ${theme}`}>
-      <Header theme={theme} toggleTheme={handleToggleTheme} />
+      <Header />
 
       <main className='main'>
         <Routes>
