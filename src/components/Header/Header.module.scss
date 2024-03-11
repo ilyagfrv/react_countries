@@ -13,29 +13,10 @@
   font-weight: 700;
   color: inherit;
 
-  transition: color 0.2s linear;
-
-  position: relative;
-
-  &::after {
-    content: '';
-    width: 0px;
-    height: 2px;
-
-    background-color: #f44250;
-
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-
-    transition: width 0.2s linear;
-  }
+  transition: opacity 0.2s linear;
 
   &:hover {
-    &::after {
-      width: 100%;
-    }
-    color: #f44250;
+    opacity: 0.5;
   }
 }
 
