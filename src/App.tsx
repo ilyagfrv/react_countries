@@ -5,9 +5,7 @@ import { selectTheme } from 'redux/theme/selectors'
 import './App.css'
 
 import { Header } from 'components'
-import Home from 'pages/Home'
-import Details from 'pages/Details'
-import NotFound from 'pages/NotFound'
+import { Home, Details, NotFound } from 'pages'
 
 export default function App() {
   const theme = useSelector(selectTheme)

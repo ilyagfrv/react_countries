@@ -1,7 +1,7 @@
 import Header from './Header'
-import Controls from './Controls'
+import Filter from './Filter'
 import List from './List'
 import Country from './Country'
 import NotFoundInfo from './NotFoundInfo'
 
-export { Header, Controls, List, Country, NotFoundInfo }
+export { Header, Filter, List, Country, NotFoundInfo }

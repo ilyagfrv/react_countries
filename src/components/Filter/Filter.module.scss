@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  padding: 0 0.9rem;
+}
+
+.searchRegion {
+  position: relative;
+}
+
+.input {
+  width: 30rem;
+  padding: 1.6rem 2rem;
+
+  border-radius: 0.4rem;
+  background-color: #f4f2f2;
+  box-shadow: 5px 6px 4px 0px rgba(0, 0, 0, 0.3);
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333029;
+}
+
+.resetIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  color: #333029;
+
+  position: absolute;
+  top: 50%;
+  right: 5%;
+
+  transform: translateY(-50%);
+  transition: color 0.2s linear;
+  cursor: pointer;
+
+  :hover {
+    color: #f44250;
+  }
+}
+
+.selectRegion {
+  min-width: 15rem;
+  padding: 1.6rem 2rem;
+
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #f4f2f2;
+  box-shadow: 5px 6px 4px 0px rgba(0, 0, 0, 0.3);
+
+  color: #333029;
+
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+}
+
+.selectRegionTitle {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.selectRegionList {
+  width: 100%;
+  padding: 1rem 2rem;
+
+  border-radius: 0.4rem;
+  background-color: inherit;
+
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 1;
+
+  li {
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    transition: color 0.1s linear;
+
+    &:hover {
+      color: #3992ff;
+    }
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

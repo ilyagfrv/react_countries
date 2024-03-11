@@ -3,14 +3,14 @@ import { Country } from 'types/country'
 
 export default function Country({
   name: { common },
-  flags: { png, alt },
+  flags: { png },
   population,
   region,
   capital,
 }: Country) {
   return (
     <li className={style.country}>
-      <img className={style.image} src={png} alt={alt} />
+      <img className={style.image} src={png} alt='' />
 
       <div className={style.content}>
         <h3 className={style.title}>{common}</h3>
