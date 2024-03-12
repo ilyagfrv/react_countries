@@ -1,0 +1,97 @@
+.container {
+  padding: 0 1rem;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+  padding: 1rem 2rem;
+
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #f4f2f2;
+
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333029;
+
+  cursor: pointer;
+  transition: color 0.2s linear;
+
+  &:hover {
+    color: teal;
+  }
+}
+
+.backIcon {
+  margin-right: 1rem;
+  font-size: 1.7rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;
+}
+
+.countryFlag {
+  border-radius: 0.4rem;
+}
+
+.countryInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.countryName {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+}
+
+.countryInfoList {
+  flex: 0 1 auto;
+  margin-bottom: 3rem;
+
+  li {
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+  }
+}
+
+.border {
+  display: flex;
+  align-items: center;
+}
+
+.borderTitle {
+  margin-right: 2rem;
+  font-size: 1.5rem;
+}
+
+.borderList {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+    border-radius: 0.4rem;
+    background-color: #fff;
+
+    font-size: 1.5rem;
+    color: #333029;
+
+    cursor: pointer;
+    transition: color 0.2s linear;
+
+    &:hover {
+      color: teal;
+    }
+  }
+}

@@ -1,7 +1,7 @@
-import style from './Country.module.scss'
+import style from './CountryCard.module.scss'
 import { Country } from 'types/country'
 
-export default function Country({
+export default function CountryCard({
   name: { common },
   flags: { png },
   population,

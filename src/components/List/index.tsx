@@ -9,7 +9,7 @@ import { selectFilters } from 'redux/filter/selectors'
 import { ALL_COUNTRIES } from 'config'
 
 import style from './List.module.scss'
-import { Country, Skeleton } from 'components'
+import { CountryCard, Skeleton } from 'components'
 
 export default function List() {
   const dispatch = useAppDispatch()
@@ -27,7 +27,7 @@ export default function List() {
     <Skeleton key={index} />
   ))
   const countries = countriesList.map((country, index) => (
-    <Country key={index} {...country} />
+    <CountryCard key={index} {...country} />
   ))
 
   return (
