@@ -1,24 +1,22 @@
 import React from 'react'
 import { IoClose } from 'react-icons/io5'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'redux/redux-hook'
+import { selectFilters } from 'redux/filter/selectors'
+import {
+  setSearchCountry,
+  setSelectRegion,
+  resetSearchCountry,
+} from 'redux/filter/slice'
 
 import style from './Filter.module.scss'
 import { Regions } from 'types/regions'
-
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'redux/redux-hook'
-import { selectRegion, selectSearch } from 'redux/filter/selectors'
-import {
-  setSearchCountry,
-  resetSearchCountry,
-  setSelectRegion,
-} from 'redux/filter/slice'
 
 const regions: Regions[] = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
 export default function Filter() {
   const dispatch = useAppDispatch()
-  const search = useSelector(selectSearch)
-  const selectedRegion = useSelector(selectRegion)
+  const { search, region } = useSelector(selectFilters)
   const [isVisibleSelectRegion, setIsVisibleSelectRegion] =
     React.useState(false)
 
@@ -57,7 +55,7 @@ export default function Filter() {
         onClick={() => setIsVisibleSelectRegion(!isVisibleSelectRegion)}
       >
         <h4 className={style.selectRegionTitle}>
-          {selectedRegion ? selectedRegion : 'Select Region'}
+          {region ? region : 'Select Region'}
         </h4>
 
         {isVisibleSelectRegion && (

@@ -5,6 +5,7 @@ type Currency = {
   name: string
   symbol: string
 }
+
 type Language = {
   iso639_1: string
   iso639_2: string
@@ -13,9 +14,7 @@ type Language = {
 }
 
 export type Country = {
-  name: {
-    common: string
-  }
+  name: string
   nativeName: string
   flag: string
   flags: {
@@ -27,7 +26,6 @@ export type Country = {
   subregion: string
   capital: string
   population: number
-  topLevelDomain: string[]
   borders: string[]
   currencies: Currency[]
   languages: Language[]

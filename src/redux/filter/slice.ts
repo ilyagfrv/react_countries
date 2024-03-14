@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import { Country } from 'types/country'
 
 const initialState = {
   search: '',
@@ -12,11 +14,14 @@ const filterSlice = createSlice({
     setSearchCountry(state, action) {
       state.search = action.payload
     },
-    setSelectRegion(state, action) {
+    setSelectRegion(state, action: PayloadAction<Country['region']>) {
       state.region = action.payload
     },
     resetSearchCountry(state) {
       state.search = ''
+    },
+    resetSelectRegion(state) {
+      state.region = ''
     },
     resetFilters() {
       return initialState
@@ -24,7 +29,12 @@ const filterSlice = createSlice({
   },
 })
 
-export const { setSearchCountry, setSelectRegion, resetSearchCountry, resetFilters } =
-  filterSlice.actions
+export const {
+  setSearchCountry,
+  setSelectRegion,
+  resetSearchCountry,
+  resetSelectRegion,
+  resetFilters,
+} = filterSlice.actions
 
 export default filterSlice.reducer

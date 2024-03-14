@@ -1,14 +1,26 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from 'redux/redux-hook'
+import { fetchDetails } from 'redux/details/asyncActions'
+import { clearDetails } from 'redux/details/slice'
+import { selectCountryDetails } from 'redux/details/selectors'
 
 import { Info } from 'components'
 
 export default function Details() {
+  const dispatch = useAppDispatch()
+  const details = useSelector(selectCountryDetails)
+
   const { name } = useParams()
-  const navigate = useNavigate()
 
-  const currentCountry = {}
+  React.useEffect(() => {
+    dispatch(fetchDetails(`https://restcountries.com/v2/name/${name}`))
 
-  return (
-    <div>{currentCountry && <Info push={navigate} {...currentCountry} />}</div>
-  )
+    return () => {
+      dispatch(clearDetails())
+    }
+  }, [name, dispatch])
+
+  return <Info {...details} />
 }

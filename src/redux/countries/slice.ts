@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Country } from 'types/country'
+import { Country } from 'types'
 import { Status } from 'types/status'
 
 import { fetchCountries } from './asyncActions'

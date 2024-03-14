@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import themeReducer from './theme/slice'
-import countriesReducer from './countries/slice'
-import filterReducer from './filter/slice'
+import theme from './theme/slice'
+import filter from './filter/slice'
+import countries from './countries/slice'
+import details from './details/slice'
 
 export const store = configureStore({
   reducer: {
-    theme: themeReducer,
-    countries: countriesReducer,
-    filter: filterReducer,
+    theme,
+    filter,
+    countries,
+    details,
   },
 })
 

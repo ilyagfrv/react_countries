@@ -1,13 +1,12 @@
 .container {
   display: grid;
-  grid-template: 1fr;
-  justify-items: center;
-  margin-top: 8rem;
+  place-items: center;
+}
 
-  span {
-    margin-bottom: 3rem;
-    font-size: 6rem;
-  }
+.image {
+  width: 100%;
+  max-width: 45rem;
+  margin-bottom: 5rem;
 }
 
 .description {

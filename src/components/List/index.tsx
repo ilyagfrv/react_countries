@@ -1,40 +1,54 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from 'redux/store'
 import { useAppDispatch } from 'redux/redux-hook'
 import { fetchCountries } from 'redux/countries/asyncActions'
-import { selectStatus, selectVisibleCountries } from 'redux/countries/selectors'
+import {
+  selectStatus,
+  selectCountries,
+  selectCountryQuantity,
+} from 'redux/countries/selectors'
 import { selectFilters } from 'redux/filter/selectors'
 
-import { ALL_COUNTRIES } from 'config'
-
 import style from './List.module.scss'
-import { CountryCard, Skeleton } from 'components'
+import { Country } from 'types/country'
+import { Card, Skeleton } from 'components'
 
 export default function List() {
   const dispatch = useAppDispatch()
-  const filters = useSelector(selectFilters)
+  const { search, region } = useSelector(selectFilters)
+  const countriesList = useSelector(selectCountries)
+  const quantity = useSelector(selectCountryQuantity)
   const status = useSelector(selectStatus)
-  const countriesList = useSelector((state: RootState) =>
-    selectVisibleCountries(state, filters)
-  )
 
   React.useEffect(() => {
-    dispatch(fetchCountries(ALL_COUNTRIES))
-  }, [])
+    if (!quantity) {
+      dispatch(
+        fetchCountries(
+          // 'https://restcountries.com/v3.1/all?fields=name,capital,flags,population,region'
+          'https://restcountries.com/v2/all?fields=name,capital,flags,population,region'
+        )
+      )
+    }
+  }, [quantity, dispatch])
+
+  const filteredCountries = countriesList.filter((country: Country) => {
+    const matchesSearch = country.name
+      .toLowerCase()
+      .includes(search.toLowerCase())
+    const matchesRegion = country.region.includes(region)
+    return matchesSearch && matchesRegion
+  })
 
   const skeletons = [...new Array(8)].map((_, index) => (
     <Skeleton key={index} />
   ))
-  const countries = countriesList.map((country, index) => (
-    <CountryCard key={index} {...country} />
+  const countries = filteredCountries.map((country, index) => (
+    <Card key={index} {...country} />
   ))
 
   return (
-    <>
-      <ul className={style.container}>
-        {status === 'loading' ? skeletons : countries}
-      </ul>
-    </>
+    <ul className={style.container}>
+      {status === 'loading' ? skeletons : countries}
+    </ul>
   )
 }

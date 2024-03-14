@@ -1,28 +1,23 @@
-import { useNavigate } from 'react-router-dom'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 
 import style from './Info.module.scss'
-import flag from '../../assets/images/russia.jpg'
+import { Country } from 'types/country'
 
-export default function Info(props) {
-  const {
-    name,
-    nativeName,
-    flagg,
-    capital,
-    population,
-    region,
-    subregion,
-    currencies = [],
-    languages = [],
-    borders = [],
-    push,
-  } = props
-  const navigate = useNavigate()
-
+export default function Info({
+  name,
+  nativeName,
+  flag,
+  capital,
+  population,
+  region,
+  subregion,
+  currencies = [],
+  languages = [],
+  borders = [],
+}: Country) {
   return (
     <section className={style.container}>
-      <button className={style.backButton} onClick={() => navigate(-1)}>
+      <button className={style.backButton}>
         <FaArrowLeftLong className={style.backIcon} />
         Back
       </button>
@@ -31,29 +26,37 @@ export default function Info(props) {
         <img className={style.countryFlag} src={flag} alt='' />
 
         <div className={style.countryInfo}>
-          <h3 className={style.countryName}>Russia</h3>
+          <h3 className={style.countryName}>{name}</h3>
 
           <ul className={style.countryInfoList}>
             <li>
-              <b>Native Name:</b> Russian Federation
+              <b>Native Name:</b> {nativeName}
             </li>
             <li>
-              <b>Population:</b> 145000000
+              <b>Population:</b> {population}
             </li>
             <li>
-              <b>Region:</b> Europe
+              <b>Region:</b> {region}
             </li>
             <li>
-              <b>Sub region:</b> Some
+              <b>Sub region:</b> {subregion}
             </li>
             <li>
-              <b>Capital:</b> Moscow
+              <b>Capital:</b> {capital}
             </li>
             <li>
-              <b>Currency:</b> Ruble
+              <b>Currency:</b>{' '}
+              {currencies.map((c) => (
+                <span key={c.code}>{c.name} </span>
+              ))}
             </li>
             <li>
-              <b>Languages:</b> Russian
+              <b>Languages:</b>{' '}
+              {languages.map((l) => (
+                <span style={{ marginRight: '5px' }} key={l.name}>
+                  {l.name}
+                </span>
+              ))}
             </li>
           </ul>
 
