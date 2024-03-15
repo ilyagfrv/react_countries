@@ -10,7 +10,7 @@ import {
 } from 'redux/filter/slice'
 
 import style from './Filter.module.scss'
-import { Regions } from 'types/regions'
+import { Regions } from 'types'
 
 const regions: Regions[] = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 

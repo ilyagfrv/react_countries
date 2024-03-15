@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 import style from './Card.module.scss'
 import { Country } from 'types/country'
 

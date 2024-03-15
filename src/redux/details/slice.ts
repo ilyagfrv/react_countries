@@ -2,15 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Country } from 'types/country'
 import { Status } from 'types/status'
 
-import { fetchDetails } from './asyncActions'
+import { fetchDetails, fetchNeighborsByBorder } from './asyncActions'
 
 type DetailSlice = {
   countryDetails: Country | null
+  neighbors: string[]
   status: Status
 }
 
 const initialState: DetailSlice = {
   countryDetails: null,
+  neighbors: [],
   status: 'idle',
 }
 
@@ -30,6 +32,9 @@ const detailSlice = createSlice({
     })
     builder.addCase(fetchDetails.rejected, (state) => {
       state.status = 'rejected'
+    })
+    builder.addCase(fetchNeighborsByBorder.fulfilled, (state, action) => {
+      state.neighbors = action.payload.map((country) => country.name)
     })
   },
 })

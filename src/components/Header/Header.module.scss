@@ -1,9 +1,9 @@
 .header {
-  min-width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
+  min-width: 100%;
   margin-bottom: 3rem;
   padding: 2rem 1rem;
 }
@@ -23,9 +23,7 @@
 .lightIcon,
 .darkIcon {
   font-size: 5rem;
-
   cursor: pointer;
-  transition: color 0.2s linear;
 }
 
 .lightIcon {

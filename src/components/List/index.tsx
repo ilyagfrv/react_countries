@@ -10,7 +10,7 @@ import {
 import { selectFilters } from 'redux/filter/selectors'
 
 import style from './List.module.scss'
-import { Country } from 'types/country'
+import { Country } from 'types'
 import { Card, Skeleton } from 'components'
 
 export default function List() {
@@ -24,7 +24,6 @@ export default function List() {
     if (!quantity) {
       dispatch(
         fetchCountries(
-          // 'https://restcountries.com/v3.1/all?fields=name,capital,flags,population,region'
           'https://restcountries.com/v2/all?fields=name,capital,flags,population,region'
         )
       )

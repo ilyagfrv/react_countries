@@ -38,6 +38,7 @@
 
 .countryFlag {
   border-radius: 0.4rem;
+  max-height: 34rem;
 }
 
 .countryInfo {
@@ -53,12 +54,16 @@
 }
 
 .countryInfoList {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   margin-bottom: 3rem;
 
   li {
     margin-bottom: 1.2rem;
     font-size: 1.5rem;
+
+    span {
+      margin-right: 0.5rem;
+    }
   }
 }
 
