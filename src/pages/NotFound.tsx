@@ -1,5 +1,5 @@
-import { NotFoundInfo } from 'components'
+import { NotFoundBlock } from 'components'
 
 export default function NotFound() {
-  return <NotFoundInfo />
+  return <NotFoundBlock />
 }

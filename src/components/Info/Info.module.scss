@@ -2,7 +2,7 @@
   padding: 0 1rem;
 }
 
-.backButton {
+.backBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,24 +36,24 @@
   gap: 5rem;
 }
 
-.countryFlag {
-  border-radius: 0.4rem;
+.flagImg {
   max-height: 34rem;
+  border-radius: 0.4rem;
 }
 
-.countryInfo {
+.info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 1rem 0;
 }
 
-.countryName {
+.country {
   margin-bottom: 3rem;
   font-size: 3rem;
 }
 
-.countryInfoList {
+.infoList {
   flex: 1 1 auto;
   margin-bottom: 3rem;
 
@@ -69,11 +69,11 @@
 
 .border {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .borderTitle {
-  margin-right: 2rem;
+  margin-bottom: 2rem;
   font-size: 1.5rem;
 }
 
@@ -99,4 +99,9 @@
       color: teal;
     }
   }
+}
+
+.borderSubtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
 }

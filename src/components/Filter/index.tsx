@@ -7,6 +7,7 @@ import {
   setSearchCountry,
   setSelectRegion,
   resetSearchCountry,
+  resetSelectRegion,
 } from 'redux/filter/slice'
 
 import style from './Filter.module.scss'
@@ -19,6 +20,7 @@ export default function Filter() {
   const { search, region } = useSelector(selectFilters)
   const [isVisibleSelectRegion, setIsVisibleSelectRegion] =
     React.useState(false)
+  const ref = React.useRef<HTMLUListElement>(null)
 
   const handleSearchCountry = (e: React.FormEvent<HTMLInputElement>) => {
     dispatch(setSearchCountry(e.currentTarget.value))
@@ -32,11 +34,26 @@ export default function Filter() {
     dispatch(resetSearchCountry())
   }
 
+  const handleResetSelectRegion = () => {
+    dispatch(resetSelectRegion())
+  }
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setIsVisibleSelectRegion(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
   return (
     <section className={style.container}>
-      <div className={style.searchRegion}>
+      <div className={style.searchCountry}>
         <input
-          className={style.input}
+          className={style.inputSearchCountry}
           type='text'
           placeholder='search country...'
           value={search}
@@ -44,7 +61,7 @@ export default function Filter() {
         />
         {search && (
           <IoClose
-            className={style.resetIcon}
+            className={style.resetSearchCountry}
             onClick={handleResetSearchCountry}
           />
         )}
@@ -58,8 +75,15 @@ export default function Filter() {
           {region ? region : 'Select Region'}
         </h4>
 
+        {region && (
+          <IoClose
+            className={style.resetSelectRegion}
+            onClick={handleResetSelectRegion}
+          />
+        )}
+
         {isVisibleSelectRegion && (
-          <ul className={style.selectRegionList}>
+          <ul className={style.selectRegionList} ref={ref}>
             {regions.map((region, index) => (
               <li key={index} onClick={() => handleSelectRegion(region)}>
                 {region}

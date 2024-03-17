@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import style from './Card.module.scss'
-import { Country } from 'types/country'
+import { Country } from 'types'
 
 export default function Card({
   name,

@@ -1,9 +1,10 @@
 import Header from './Header'
 import Filter from './Filter'
 import List from './List'
-import Card from './Card'
-import Skeleton from './Card/Skeleton'
 import Info from './Info'
-import NotFoundInfo from './NotFoundInfo'
+import Card from './Card'
+import CardLoader from './Card/CardLoader'
+import NotFoundBlock from './NotFoundBlock'
+import Error from './Error'
 
-export { Header, Filter, List, Card, Skeleton, Info, NotFoundInfo }
+export { Header, Filter, List, Info, Card, CardLoader, NotFoundBlock, Error }

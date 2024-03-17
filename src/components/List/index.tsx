@@ -11,7 +11,7 @@ import { selectFilters } from 'redux/filter/selectors'
 
 import style from './List.module.scss'
 import { Country } from 'types'
-import { Card, Skeleton } from 'components'
+import { Card, CardLoader, Error } from 'components'
 
 export default function List() {
   const dispatch = useAppDispatch()
@@ -39,14 +39,15 @@ export default function List() {
   })
 
   const skeletons = [...new Array(8)].map((_, index) => (
-    <Skeleton key={index} />
+    <CardLoader key={index} />
   ))
-  const countries = filteredCountries.map((country, index) => (
+  const countries = filteredCountries.map((country: Country, index: number) => (
     <Card key={index} {...country} />
   ))
 
   return (
     <ul className={style.container}>
+      {status === 'rejected' && <Error />}
       {status === 'loading' ? skeletons : countries}
     </ul>
   )

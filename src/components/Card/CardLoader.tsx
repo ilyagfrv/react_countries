@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader'
 
-const Skeleton = () => (
+const CardLoader = () => (
   <ContentLoader
     speed={2}
     width={400}
@@ -13,4 +13,4 @@ const Skeleton = () => (
   </ContentLoader>
 )
 
-export default Skeleton
+export default CardLoader

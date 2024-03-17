@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'redux/redux-hook'
 import { fetchDetails } from 'redux/details/asyncActions'
-import { clearDetails } from 'redux/details/slice'
 import { selectCountryDetails } from 'redux/details/selectors'
+import { clearDetails } from 'redux/details/slice'
 
 import { Info } from 'components'
 

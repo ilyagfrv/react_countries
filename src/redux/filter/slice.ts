@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Regions } from 'types/regions'
 
-import { Country } from 'types/country'
+type FilterSlice = {
+  search: string
+  region: Regions | ''
+}
 
-const initialState = {
+const initialState: FilterSlice = {
   search: '',
   region: '',
 }
@@ -11,10 +15,10 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
-    setSearchCountry(state, action) {
+    setSearchCountry(state, action: PayloadAction<string>) {
       state.search = action.payload
     },
-    setSelectRegion(state, action: PayloadAction<Country['region']>) {
+    setSelectRegion(state, action: PayloadAction<Regions | ''>) {
       state.region = action.payload
     },
     resetSearchCountry(state) {
