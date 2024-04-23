@@ -4,32 +4,31 @@
   justify-items: center;
   align-items: center;
   min-width: 100%;
-  margin-bottom: 3rem;
-  padding: 2rem 1rem;
+  padding: 4rem 1rem;
 }
 
-.title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: inherit;
-
-  transition: opacity 0.2s linear;
+.link {
+  transition: opacity 0.1s ease-in;
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }
 
-.lightIcon,
-.darkIcon {
-  font-size: 5rem;
+.title {
+  display: inline-block;
+  font-size: 4.5rem;
+
+  user-select: none;
+}
+
+.globe {
+  width: 4rem;
+}
+
+.icon {
+  width: 6rem;
+  height: 6rem;
+
   cursor: pointer;
-}
-
-.lightIcon {
-  color: #fecc1b;
-}
-
-.darkIcon {
-  color: #3992ff;
 }

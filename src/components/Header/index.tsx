@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { IoSunny } from 'react-icons/io5'
-import { GiNightSky } from 'react-icons/gi'
+import { GiGlobe } from 'react-icons/gi'
+import sun from 'assets/images/sun.svg'
+import moon from 'assets/images/moon.svg'
 
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'redux/redux-hook'
@@ -24,15 +25,18 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      <Link className={style.title} to='/'>
-        <h1 onClick={handleResetFilters}>Explore the world</h1>
+      <Link className={style.link} to='/'>
+        <h1 className={style.title} onClick={handleResetFilters}>
+          Explore the world
+        </h1>
+        <GiGlobe className={style.globe} />
       </Link>
 
       <div onClick={handleToggleTheme}>
         {theme === 'light' ? (
-          <IoSunny className={style.lightIcon} />
+          <img className={style.icon} src={sun} alt='' />
         ) : (
-          <GiNightSky className={style.darkIcon} />
+          <img className={style.icon} src={moon} alt='' />
         )}
       </div>
     </header>
