@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaArrowLeftLong } from 'react-icons/fa6'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'redux/redux-hook'
 import { fetchNeighborsByBorder } from 'redux/details/asyncActions'
@@ -12,6 +12,7 @@ import { Error } from 'components'
 import { Country } from 'types'
 
 export default function Info({
+  id,
   name,
   nativeName,
   flag,
@@ -19,7 +20,7 @@ export default function Info({
   population,
   region,
   subregion,
-  currencies = [],
+  currency,
   languages = [],
   borders = [],
 }: Country) {
@@ -27,12 +28,13 @@ export default function Info({
   const neighbors = useSelector(selectNeighbors)
   const status = useSelector(selectStatus)
   const navigate = useNavigate()
+  // const { id } = useParams()
 
   React.useEffect(() => {
     if (borders.length) {
       dispatch(
         fetchNeighborsByBorder(
-          `https://restcountries.com/v2/alpha?codes=${borders}.join(',')`
+          `https://aa5531b9abfac193.mokky.dev/countries?_select=id,name`
         )
       )
     }
@@ -51,7 +53,7 @@ export default function Info({
           </button>
 
           <div className={style.content}>
-            <img className={style.flagImg} src={flag} alt='' />
+            <img className={style.flagImg} src={`/flags/${flag}`} alt='' />
 
             <div className={style.info}>
               <h3 className={style.country}>{name}</h3>
@@ -73,21 +75,21 @@ export default function Info({
                   <b>Capital:</b> {capital}
                 </li>
                 <li>
-                  <b>Currency:</b>{' '}
-                  {currencies.map((curr) => (
-                    <span key={curr.code}>{curr.name}</span>
-                  ))}
+                  <b>Currency:</b> {currency}
                 </li>
                 <li>
                   <b>Languages:</b>{' '}
-                  {languages.map((lang) => (
-                    <span key={lang.name}>{lang.name}</span>
+                  {languages.map((lang, i) => (
+                    <span key={i}>{lang}</span>
                   ))}
                 </li>
               </ul>
 
               <div className={style.border}>
-                <h4 className={style.borderTitle}>Border countries:</h4>
+                {!!borders.length && (
+                  <h4 className={style.borderTitle}>Border countries:</h4>
+                )}
+
                 {!borders.length ? (
                   <p className={style.borderSubtitle}>
                     This country has no neighbors
@@ -96,10 +98,10 @@ export default function Info({
                   <ul className={style.borderList}>
                     {neighbors.map((border) => (
                       <li
-                        key={border}
-                        onClick={() => navigate(`/country/${border}`)}
+                        key={border.id}
+                        onClick={() => navigate(`/countries/${border.id}`)}
                       >
-                        {border}
+                        {border.name}
                       </li>
                     ))}
                   </ul>

@@ -11,16 +11,17 @@ import { Info } from 'components'
 export default function Details() {
   const dispatch = useAppDispatch()
   const details = useSelector(selectCountryDetails)
-
-  const { name } = useParams()
+  const { id } = useParams()
 
   React.useEffect(() => {
-    dispatch(fetchDetails(`https://restcountries.com/v2/name/${name}`))
+    dispatch(
+      fetchDetails(`https://aa5531b9abfac193.mokky.dev/countries/${id}`)
+    )
 
     return () => {
       dispatch(clearDetails())
     }
-  }, [name, dispatch])
+  }, [id, dispatch])
 
   return <Info {...details} />
 }

@@ -4,16 +4,17 @@ import style from './Card.module.scss'
 import { Country } from 'types'
 
 export default function Card({
+  id,
   name,
-  flags,
+  flag,
   population,
   region,
   capital,
 }: Country) {
   return (
-    <Link to={`country/${name}`}>
-      <li className={style.country}>
-        <img className={style.image} src={flags.png} alt='' />
+    <Link to={`countries/${id}`}>
+      <li className={style.card}>
+        <img src={`/flags/${flag}`} alt='' />
 
         <div className={style.content}>
           <h3 className={style.title}>{name}</h3>

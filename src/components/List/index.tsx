@@ -22,11 +22,7 @@ export default function List() {
 
   React.useEffect(() => {
     if (!quantity) {
-      dispatch(
-        fetchCountries(
-          'https://restcountries.com/v2/all?fields=name,capital,flags,population,region'
-        )
-      )
+      dispatch(fetchCountries('https://aa5531b9abfac193.mokky.dev/countries'))
     }
   }, [quantity, dispatch])
 

@@ -16,7 +16,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path='/country/:name' element={<Details />} />
+            <Route path='/countries/:id' element={<Details />} />
             <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>

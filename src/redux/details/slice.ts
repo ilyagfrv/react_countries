@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Country, Status } from 'types'
 
 import { fetchDetails, fetchNeighborsByBorder } from './asyncActions'
 
 type DetailSlice = {
   countryDetails: Country | null
-  neighbors: string[]
+  neighbors: any
   status: Status
 }
 
@@ -25,15 +25,20 @@ const detailSlice = createSlice({
     builder.addCase(fetchDetails.pending, (state) => {
       state.status = 'loading'
     })
-    builder.addCase(fetchDetails.fulfilled, (state, action) => {
-      state.status = 'received'
-      state.countryDetails = action.payload[0]
-    })
+    builder.addCase(
+      fetchDetails.fulfilled,
+      (state, action: PayloadAction<Country>) => {
+        state.status = 'received'
+        state.countryDetails = action.payload
+      }
+    )
     builder.addCase(fetchDetails.rejected, (state) => {
       state.status = 'rejected'
     })
     builder.addCase(fetchNeighborsByBorder.fulfilled, (state, action) => {
-      state.neighbors = action.payload.map((country) => country.name)
+      state.neighbors = action.payload.filter((country) =>
+        state.countryDetails?.borders.includes(country.name)
+      )
     })
   },
 })
