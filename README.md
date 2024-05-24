@@ -8,4 +8,5 @@
 - TypeScript
 - Axios
 - CSS
+- Docker
 - Rsbuild
