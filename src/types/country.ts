@@ -5,11 +5,16 @@ export type Country = {
   name: string
   nativeName: string
   population: number
-  flag: string
   region: Regions
   subregion: string
   capital: string
   currency: string
+  flag: string
   languages: string[]
   borders: string[]
+}
+
+export type SimplifiedCountry = {
+  id: number
+  name: string
 }

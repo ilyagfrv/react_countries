@@ -13,7 +13,7 @@ import style from './List.module.scss'
 import { Country } from 'types'
 import { Card, CardLoader, Error } from 'components'
 
-export default function List() {
+export const List = () => {
   const dispatch = useAppDispatch()
   const { search, region } = useSelector(selectFilters)
   const countriesList = useSelector(selectCountries)
@@ -38,13 +38,15 @@ export default function List() {
     <CardLoader key={index} />
   ))
   const countries = filteredCountries.map((country: Country, index: number) => (
-    <Card key={index} {...country} />
+    <ul key={index}>
+      <Card {...country} />
+    </ul>
   ))
 
   return (
-    <ul className={style.container}>
+    <div className={style.container}>
       {status === 'rejected' && <Error />}
       {status === 'loading' ? skeletons : countries}
-    </ul>
+    </div>
   )
 }

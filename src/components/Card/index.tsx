@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import style from './Card.module.scss'
 import { Country } from 'types'
 
-export default function Card({
+export const Card = ({
   id,
   name,
   flag,
   population,
   region,
   capital,
-}: Country) {
+}: Country) => {
   return (
     <Link to={`countries/${id}`}>
       <li className={style.card}>

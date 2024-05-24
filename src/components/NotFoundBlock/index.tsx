@@ -1,7 +1,7 @@
 import style from './NotFoundBlock.module.scss'
 import Image from '../../assets/images/no_page.svg'
 
-export default function NotFoundBlock() {
+export const NotFoundBlock = () => {
   return (
     <div className={style.container}>
       <img className={style.image} src={Image} alt='' />

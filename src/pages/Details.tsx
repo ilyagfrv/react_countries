@@ -14,14 +14,12 @@ export default function Details() {
   const { id } = useParams()
 
   React.useEffect(() => {
-    dispatch(
-      fetchDetails(`https://aa5531b9abfac193.mokky.dev/countries/${id}`)
-    )
+    dispatch(fetchDetails(`https://aa5531b9abfac193.mokky.dev/countries/${id}`))
 
     return () => {
       dispatch(clearDetails())
     }
   }, [id, dispatch])
 
-  return <Info {...details} />
+  return <Info {...details!} />
 }

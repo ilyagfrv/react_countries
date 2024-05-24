@@ -1,6 +1,6 @@
 import ContentLoader from 'react-content-loader'
 
-const CardLoader = () => (
+export const CardLoader = () => (
   <ContentLoader
     speed={2}
     width={400}
@@ -12,5 +12,3 @@ const CardLoader = () => (
     <rect x='6' y='17' rx='4' ry='4' width='400' height='380' />
   </ContentLoader>
 )
-
-export default CardLoader

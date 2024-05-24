@@ -1,6 +1,6 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { FaArrowLeftLong } from 'react-icons/fa6'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'redux/redux-hook'
 import { fetchNeighborsByBorder } from 'redux/details/asyncActions'
@@ -11,8 +11,7 @@ import InfoLoader from './InfoLoader'
 import { Error } from 'components'
 import { Country } from 'types'
 
-export default function Info({
-  id,
+export const Info = ({
   name,
   nativeName,
   flag,
@@ -23,14 +22,13 @@ export default function Info({
   currency,
   languages = [],
   borders = [],
-}: Country) {
+}: Country) => {
   const dispatch = useAppDispatch()
   const neighbors = useSelector(selectNeighbors)
   const status = useSelector(selectStatus)
   const navigate = useNavigate()
-  // const { id } = useParams()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (borders.length) {
       dispatch(
         fetchNeighborsByBorder(
@@ -46,7 +44,7 @@ export default function Info({
       {status === 'loading' ? (
         <InfoLoader />
       ) : (
-        <>
+        <section>
           <button className={style.backBtn} onClick={() => navigate(-1)}>
             <FaArrowLeftLong className={style.backIcon} />
             Back
@@ -86,30 +84,29 @@ export default function Info({
               </ul>
 
               <div className={style.border}>
-                {!!borders.length && (
-                  <h4 className={style.borderTitle}>Border countries:</h4>
-                )}
-
                 {!borders.length ? (
                   <p className={style.borderSubtitle}>
                     This country has no neighbors
                   </p>
                 ) : (
-                  <ul className={style.borderList}>
-                    {neighbors.map((border) => (
-                      <li
-                        key={border.id}
-                        onClick={() => navigate(`/countries/${border.id}`)}
-                      >
-                        {border.name}
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h4 className={style.borderTitle}>Border countries:</h4>
+                    <ul className={style.borderList}>
+                      {neighbors.map((neighbor) => (
+                        <li
+                          key={neighbor.id}
+                          onClick={() => navigate(`/countries/${neighbor.id}`)}
+                        >
+                          {neighbor.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </div>
             </div>
           </div>
-        </>
+        </section>
       )}
     </section>
   )

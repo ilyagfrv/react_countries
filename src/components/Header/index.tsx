@@ -11,7 +11,7 @@ import { resetFilters } from 'redux/filter/slice'
 
 import style from './Header.module.scss'
 
-export default function Header() {
+export const Header = () => {
   const dispatch = useAppDispatch()
   const theme = useSelector(selectTheme)
 

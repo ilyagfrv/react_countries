@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Country, Status } from 'types'
+import { Country, SimplifiedCountry, Status } from 'types'
 
 import { fetchDetails, fetchNeighborsByBorder } from './asyncActions'
 
 type DetailSlice = {
   countryDetails: Country | null
-  neighbors: any
+  neighbors: SimplifiedCountry[]
   status: Status
 }
 
@@ -35,11 +35,14 @@ const detailSlice = createSlice({
     builder.addCase(fetchDetails.rejected, (state) => {
       state.status = 'rejected'
     })
-    builder.addCase(fetchNeighborsByBorder.fulfilled, (state, action) => {
-      state.neighbors = action.payload.filter((country) =>
-        state.countryDetails?.borders.includes(country.name)
-      )
-    })
+    builder.addCase(
+      fetchNeighborsByBorder.fulfilled,
+      (state, action: PayloadAction<SimplifiedCountry[]>) => {
+        state.neighbors = action.payload.filter((country) =>
+          state.countryDetails?.borders.includes(country.name)
+        )
+      }
+    )
   },
 })
 

@@ -15,7 +15,7 @@ import { Regions } from 'types'
 
 const regions: Regions[] = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
-export default function Filter() {
+export const Filter = () => {
   const dispatch = useAppDispatch()
   const { search, region } = useSelector(selectFilters)
   const [isVisibleSelectRegion, setIsVisibleSelectRegion] =
